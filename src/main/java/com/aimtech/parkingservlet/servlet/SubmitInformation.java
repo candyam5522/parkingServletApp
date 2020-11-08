@@ -32,7 +32,7 @@ public class SubmitInformation extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String occupantFirstName = request.getParameter("OccupantFirstName");
 		String occupantLastName = request.getParameter("OccupantLastName");
-		logger.error("This is a log4j message {} {}", occupantFirstName, occupantLastName);
+		logger.info("This is a log4j message {} {}", occupantFirstName, occupantLastName);
 		testDao = new TestDao();
 		testDao.postTest();
 	}
