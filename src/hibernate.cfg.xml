@@ -11,6 +11,10 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
         <property name="hibernate.c3p0.min_size">10</property>
+        <!-- In order to use getCurrentSession in Hibernate SessionFactory 
+          because it returns a session bound to a context. 
+          Later on when use spring, no need to set it explicitly anymore -->
+        <property name="hibernate.current_session_context_class">thread</property>
         <!-- 
         <property name="hibernate.c3p0.max_size">20</property>
 		<property name="hibernate.c3p0.acquire_increment">1</property>

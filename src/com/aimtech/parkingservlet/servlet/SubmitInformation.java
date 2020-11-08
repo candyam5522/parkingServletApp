@@ -11,7 +11,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import com.aimtech.parkingservlet.dao.TestDao;
 import com.aimtech.parkingservlet.model.Test;
 
 
@@ -22,7 +25,8 @@ import com.aimtech.parkingservlet.model.Test;
 @WebServlet("/SubmitInformation")
 public class SubmitInformation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private TestDao testDao;
+	
     public SubmitInformation() {
         super();
     }
@@ -30,19 +34,8 @@ public class SubmitInformation extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		Test test = new Test();
-		test.setIdtest(5);
-		test.setFirstname("Miao"+test.getIdtest());
-		test.setLastname("Ai"+test.getIdtest());
-		
-		Configuration cfg = new Configuration().configure().addAnnotatedClass(Test.class);
-		SessionFactory sf = cfg.buildSessionFactory();
-		
-		Session session = sf.openSession();
-		Transaction tx = session.beginTransaction();
-		session.save(test);
-		tx.commit();
-		session.close();
+		testDao = new TestDao();
+		testDao.postTest();
 	}
 
 
