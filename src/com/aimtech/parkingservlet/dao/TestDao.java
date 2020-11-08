@@ -17,9 +17,8 @@ public class TestDao {
 	
 	public void postTest(){
 		Test test = new Test();
-		test.setIdtest(9);
-		test.setFirstname("Miao"+test.getIdtest());
-		test.setLastname("Ai"+test.getIdtest());		
+		test.setFirstname("Miao");
+		test.setLastname("Ai");		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		session.save(test);

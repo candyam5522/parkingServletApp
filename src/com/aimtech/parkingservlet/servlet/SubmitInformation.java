@@ -7,15 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.aimtech.parkingservlet.dao.TestDao;
-import com.aimtech.parkingservlet.model.Test;
 
 
 
@@ -26,14 +21,18 @@ import com.aimtech.parkingservlet.model.Test;
 public class SubmitInformation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private TestDao testDao;
-	
+
+    final static Logger logger = LogManager.getLogger(SubmitInformation.class);
+    
     public SubmitInformation() {
         super();
     }
-
-
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String occupantFirstName = request.getParameter("OccupantFirstName");
+		String occupantLastName = request.getParameter("OccupantLastName");
+		logger.error("This is a log4j message {} {}", occupantFirstName, occupantLastName);
 		testDao = new TestDao();
 		testDao.postTest();
 	}
