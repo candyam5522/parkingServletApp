@@ -15,10 +15,10 @@ public class TestDao {
 		return tests;
 	}
 	
-	public void postTest(){
+	public void postTest(String occupantFirstName, String occupantLastName){
 		Test test = new Test();
-		test.setFirstname("Miao");
-		test.setLastname("Ai");		
+		test.setFirstname(occupantFirstName);
+		test.setLastname(occupantLastName);		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		session.save(test);
