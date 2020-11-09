@@ -5,11 +5,36 @@
 <title>parkingServletApp</title>
 </head>
 <body>
-     Parking form Miao3:
-     <form action="submitInformation" method="post">
-	     Occupant first name: <input type="text" name="occupantFirstName">
-	     Occupant last name: <input type="text" name="occupantLastName">
+     Occupant Information:
+     <form action="submitOccupant" method="post">
+	     First name: <input type="text" name="firstName">
+	     <br>	     
+	     Last name: <input type="text" name="lastName">
 	     <br>
+	     Email: <input type="text" name="email">
+	     <br>
+	     Phone: <input type="text" name="phone">
+	     <br>
+	     Emergency contact first name: <input type="text" name="emergencyContactFirstName">
+	     <br>
+	     Emergency contact last name: <input type="text" name="emergencyContactLastName">
+	     <br>
+	     Emergency contact phone: <input type="text" name="emergencyContactPhone">
+	     <br>
+	     Owner: <input type="radio" value="owner" name="Type">
+	     Tenant: <input type="radio" value="tenant" name="Type">
+	     <br>
+	 Address:
+	     Street number: <input type="text" name="streetNumber">
+	     <br>
+	     Street name: <input type="text" name="streetName">
+	     <br>
+	     City: <input type="text" name="city">
+	     <br>
+	     State: <input type="text" name="state">
+	     <br>
+	     zipcode: <input type="text" name="zipCode">
+	     <br>	          	     	     	     	     
 	     <input type="submit">
      </form>
 </body>

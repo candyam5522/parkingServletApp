@@ -8,9 +8,10 @@
         <property name="hibernate.connection.password">root2020</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/parkingservletapp</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="show_sql">true</property>
         <property name="hibernate.c3p0.min_size">10</property>
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
         <!-- In order to use getCurrentSession in Hibernate SessionFactory 
           because it returns a session bound to a context. 
           Later on when use spring, no need to set it explicitly anymore -->

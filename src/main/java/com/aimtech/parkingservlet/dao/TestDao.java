@@ -23,6 +23,5 @@ public class TestDao {
 		Transaction tx = session.beginTransaction();
 		session.save(test);
 		tx.commit();
-		session.close();
 	}
 }

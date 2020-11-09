@@ -5,6 +5,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import com.aimtech.parkingservlet.model.Lenoxproperty;
+import com.aimtech.parkingservlet.model.Occupant;
 import com.aimtech.parkingservlet.model.Test;
 
 public class HibernateUtil {
@@ -13,7 +15,8 @@ public class HibernateUtil {
 	
 	public static SessionFactory getSessionFactory() {
 		if(sessionFactory == null){
-			Configuration cfg = new Configuration().configure().addAnnotatedClass(Test.class);
+			Configuration cfg = new Configuration().configure().addAnnotatedClass(Test.class)
+					.addAnnotatedClass(Occupant.class).addAnnotatedClass(Lenoxproperty.class);
 			ServiceRegistry sreg = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
 			sessionFactory = cfg.buildSessionFactory(sreg);				
 		}
