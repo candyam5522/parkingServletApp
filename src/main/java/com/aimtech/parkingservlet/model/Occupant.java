@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -31,8 +32,8 @@ public class Occupant {
 	@Column(nullable = false, columnDefinition = "TINYINT(1)")
 	private boolean isCurrent;
 
-	@OneToOne
-	@JoinColumn(name="lenoxproperty_idlenoxproperty",referencedColumnName="idlenoxproperty")
+	@ManyToOne
+	//@JoinColumn(name="lenoxproperty_idlenoxproperty",referencedColumnName="idlenoxproperty")
 	private Lenoxproperty lenoxproperty;
 	
 	public int getIdoccupant() {

@@ -8,10 +8,18 @@ import com.aimtech.parkingservlet.model.Occupant;
 import com.aimtech.parkingservlet.util.HibernateUtil;
 
 public class OccupantDao {
-	public void postOccupant(Occupant occupant){
+	public void saveOccupant(Occupant occupant){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		session.save(occupant);
-		tx.commit();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			session.save(occupant);
+			tx.commit();
+		}catch (Exception ex){
+			if(tx != null){
+				tx.rollback();
+			}
+			throw ex;
+		}
 	}
 }

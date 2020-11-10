@@ -42,8 +42,8 @@ public class SubmitOccupant extends HttpServlet {
 		String state = request.getParameter("state");
 		String zipCode = request.getParameter("zipCode");
 		
-		logger.info("streetNumber: {}; streetName: {}; city: {}; state: {}; "
-				+ "zipCode: {};", 
+		logger.info("********streetNumber: {}; streetName: {}; city: {}; state: {}; "
+				+ "zipCode: {};********", 
 				streetNumber, streetName,city, state, zipCode);
 		
 		Lenoxproperty lenoxproperty =new Lenoxproperty();
@@ -54,7 +54,12 @@ public class SubmitOccupant extends HttpServlet {
 		lenoxproperty.setZipCode(zipCode);
 		
 		lenoxpropertyDao = new LenoxpropertyDao();
-		lenoxpropertyDao.postLenoxproperty(lenoxproperty);
+		Lenoxproperty foundLenoxproperty = lenoxpropertyDao.getLenoxproperty(lenoxproperty);
+		if (foundLenoxproperty == null){
+			lenoxpropertyDao.saveLenoxproperty(lenoxproperty);
+		} else {
+			lenoxproperty.setIdlenoxproperty(foundLenoxproperty.getIdlenoxproperty());
+		}
 		
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
@@ -64,8 +69,8 @@ public class SubmitOccupant extends HttpServlet {
 		String emergencyContactLastName = request.getParameter("emergencyContactLastName");
 		String emergencyContactPhone = request.getParameter("emergencyContactPhone");
 		String type = request.getParameter("Type");
-		logger.info("firstName: {}; lastName: {}; email: {}; phone: {}; "
-				+ "emergencyContactFirstName: {}; emergencyContactLastName: {}; emergencyContactPhone: {}; type: {}", 
+		logger.info("********firstName: {}; lastName: {}; email: {}; phone: {}; "
+				+ "emergencyContactFirstName: {}; emergencyContactLastName: {}; emergencyContactPhone: {}; type: {}********", 
 				firstName, lastName,email, phone, emergencyContactFirstName,emergencyContactLastName,emergencyContactPhone,type);
 		
 		Occupant occupant = new Occupant();
@@ -85,7 +90,7 @@ public class SubmitOccupant extends HttpServlet {
 		occupant.setCurrent(true);
 
 		occupantDao = new OccupantDao();
-		occupantDao.postOccupant(occupant);
+		occupantDao.saveOccupant(occupant);
 	}
 
 
